@@ -27,3 +27,4 @@ def AStar_MHT(initial_arr,goal_arr):
     ds.print_line()
     ds.search_line(close)
     print('搜索步骤为',len(close) - 1,'总估价为',close[-1].cost+close[-1].distance)
+

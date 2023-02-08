@@ -1,6 +1,7 @@
-#一致代价优先搜索
 import DataStructure as ds
 import numpy as np
+
+#一致代价优先搜索
 def UCS(initial_arr,goal_arr):
     open = [initial_arr]
     close = []

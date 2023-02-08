@@ -23,8 +23,9 @@ def AStar_ND(initial_arr ,goal_arr):
                 if i.state not in open_1:
                     if i.state not in close_1:
                         open.insert(0,i)
-                        open.sort(key = lambda x: x.nd_nums + x.cost)  #按不在位数＋cost 进行排序
+                        open.sort(key = lambda x: x.mis_nums + x.cost)  #按不在位数＋cost 进行排序
  
     ds.print_line()
     ds.search_line(close)
     print('搜索步骤为',len(close) - 1)
+    
