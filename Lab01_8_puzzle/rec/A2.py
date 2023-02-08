@@ -1,4 +1,4 @@
-import DataStructure as ds
+import little_tools as lt
 import numpy as np
 #A*算法-曼哈顿距离
 def AStar_MHT(initial_arr,goal_arr):
@@ -15,7 +15,7 @@ def AStar_MHT(initial_arr,goal_arr):
         if n.state == goal_arr:
             print('最优路径如下：')
             print(np.array(n.state))    #转换成矩阵打印最终节点
-            ds.print_path(n)
+            lt.print_path(n)
             break
         else:
             for i in n.get_children():  #添加子节点进OPEN
@@ -24,7 +24,7 @@ def AStar_MHT(initial_arr,goal_arr):
                         open.insert(0,i)
                         open.sort(key = lambda x: x.distance + x.cost)  #按曼哈顿距离＋cost 进行排序
  
-    ds.print_line()
-    ds.search_line(close)
+    lt.print_line()
+    lt.search_line(close)
     print('搜索步骤为',len(close) - 1,'总估价为',close[-1].cost+close[-1].distance)
 

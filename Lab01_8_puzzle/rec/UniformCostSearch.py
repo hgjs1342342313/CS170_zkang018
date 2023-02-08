@@ -1,4 +1,4 @@
-import DataStructure as ds
+import little_tools as lt
 import numpy as np
 
 #一致代价优先搜索
@@ -19,7 +19,7 @@ def UCS(initial_arr,goal_arr):
         if n.state == goal_arr:
             print('最优路径如下：')
             print(np.array(n.state))    #转换成矩阵打印最终节点
-            ds.print_path(n)
+            lt.print_path(n)
             break
         else:
             for i in n.get_children():  #添加子节点进OPEN
@@ -27,6 +27,6 @@ def UCS(initial_arr,goal_arr):
                     if i.state not in close_3:
                         open.append(i)
  
-    ds.print_line()
-    ds.search_line(close)
+    lt.print_line()
+    lt.search_line(close)
     print('搜索步骤为',len(close) - 1, '权重为',close[-1].cost)
