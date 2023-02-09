@@ -8,7 +8,10 @@ import numpy as np
 def AStar_Manhattan(initial_arr, goal_arr):
     open = [initial_arr]
     close = []
+    kkk = 0
     while len(open):
+        print("times: ", kkk)
+        kkk += 1
         sub_open = []
         sub_close = []
         for i in open:

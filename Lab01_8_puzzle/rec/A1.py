@@ -15,8 +15,12 @@ import numpy as np
 def AStar_Misplaced(initial_arr, goal_arr):
     open = [initial_arr]
     close = []
+    kkk = 0
     # for all nodes in open,
     while len(open):
+       # print("times, ", kkk)
+        print("length, ", len(open))
+        kkk += 1
         sub_open = []
         sub_close = []
     # get the states of open array and close array
@@ -25,6 +29,7 @@ def AStar_Misplaced(initial_arr, goal_arr):
         for i in close:
             sub_close.append(i.state)
         head = open.pop(0)
+        print("open pop! ", len(open))
         close.append(head)
         if head.state == goal_arr:
             print("A-star misplaced found!")
@@ -32,10 +37,13 @@ def AStar_Misplaced(initial_arr, goal_arr):
             lt.print_path(head)
             break
         else:
+            print("New sub add")
             for i in head.get_children():
+                print("i.state, ", i.state)
                 if i.state not in sub_open:
                     if i.state not in sub_close:
                         open.append(i)
+                        #sub_open.append(i)
                         open.sort(key=lt.AMisplaced)
     lt.print_line()
     lt.search_line(close)

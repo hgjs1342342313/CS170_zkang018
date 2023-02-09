@@ -77,6 +77,7 @@ def get_elements(arr):
     if c < 2:
         elements.append(arr[r][c+1])
     return elements
+
 #def get manhattan distance
 def manhattan(arr1, arr2):
     distance = []
