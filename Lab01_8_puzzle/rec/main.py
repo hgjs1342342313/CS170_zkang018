@@ -86,7 +86,7 @@ def manhattan(arr1, arr2):
         for j in i:
             local1 = find_target(arr1, j)
             local2 = find_target(arr2, j)
-            distance.append(abs(local1[0]+local2[0])+abs(local1[1]-local2[1]))
+            distance.append(abs(local1[0]-local2[0])+abs(local1[1]-local2[1]))
     return sum(distance)
 
 #def get misplaced tiles number
@@ -163,6 +163,8 @@ def main() :
         )
         print("Now, print 1 to use UCS, print 2 to use A star with misplaced tiles, print 3 to use A star with distance")
         i = int(input())
+        print("Expanding state")
+        print(initial_arr.state)
         if i ==1:
             ucs.UCS(initial_arr, goal_arr)
         elif i == 2:

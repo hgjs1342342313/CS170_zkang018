@@ -30,44 +30,12 @@ def AStar_Misplaced(initial_arr, goal_arr):
             print(np.array(head.state))
             lt.print_path(head)
             break
+        print("The best state to expand with g(n) = ", head.cost, " and h(n) = ", head.distance, " is...")
+        print(np.array(head.state), "Expanding this node...")
         childs = head.get_children()
         for i in childs:
             if (i.state not in close) and (i.state not in open):
                 open.append(i)
-
-    #    # print("times, ", kkk)
-    #     print("length, ", len(open))
-    #     kkk += 1
-    #     sub_open = []
-    #     sub_close = []
-    # # get the states of open array and close array
-    #     for i in open:
-    #         sub_open.append(i.state)
-    #     for i in close:
-    #         sub_close.append(i.state)
-    #     head = open.pop(0)
-    #     print("open pop! ", len(open))
-    #     close.append(head)
-        # if head.state == goal_arr:
-        #     print("A-star misplaced found!")
-        #     print(np.array(head.state))
-        #     lt.print_path(head)
-        #     break
-        # else:
-        #     print("New sub add")
-        #     for i in head.get_children():
-        #         print("i.state, ", i.state)
-        #         if i.state != goal_arr:
-        #             if i.state not in sub_open:
-        #                 if i.state not in sub_close:
-        #                     open.append(i)
-        #                     #sub_open.append(i)
-        #                     open.sort(key=lt.AMisplaced)
-        #         else:
-        #             print("A-star misplaced found!")
-        #             print(np.array(head.state))
-        #             lt.print_path(head)
-        #             break
     lt.print_line()
     lt.search_line(close)
     print("Searching path is", len(close) - 1)

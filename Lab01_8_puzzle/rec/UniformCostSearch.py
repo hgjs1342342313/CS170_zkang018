@@ -42,6 +42,8 @@ def UCS(initial_arr, goal_arr):
             lt.print_path(head)
             break
         else:
+            print("The best state to expand with g(n) = ", head.cost, " and h(n) = ", head.distance, " is...")
+            print(np.array(head.state), "Expanding this node...")
             for i in head.get_children():
                 if i.state not in sub_open:
                     if i.state not in sub_close:
