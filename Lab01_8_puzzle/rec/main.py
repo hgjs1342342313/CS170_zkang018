@@ -141,7 +141,7 @@ goal_arr = input_state(goal)
 def main() :
     print("press 1 to input your initial state, press 2 to use default state")
     i = int(input())
-    initial = "871 602 543"
+    initial = "012 453 786"
     if i == 1:
         print("please input your state. The format should be like \"123 456 780\", where 0 is the blank")
         initial = input()
