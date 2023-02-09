@@ -5,7 +5,7 @@ import numpy as np
 def getMinIndex(arr):
     return arr.index(min(arr))
 #def ucs(initial_arr, goal_arr)
-def ucs(initial_arr, goal_arr):
+def UCS(initial_arr, goal_arr):
     open = [initial_arr]
     close = []
     while len(open):

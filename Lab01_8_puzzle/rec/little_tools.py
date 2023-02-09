@@ -12,8 +12,6 @@ def print_path(n):
 def print_line():
     print("-`-`-`-" * 5)
     print("`-`-`-`" * 5)
-    print("-o-o-o-o-o" * 5)
-    print("o-o-o-o-o-" * 5)
 
 #print searching line
 def search_line(close):

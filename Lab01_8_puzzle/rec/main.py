@@ -23,8 +23,9 @@ import numpy as np
 # Module 1: if the solution is Available
 #def calcluate disordered number
 def calDisNum(arrayIn):
+    disNum = 0
     for i in range(1, 9):
-        disNum = 0
+        
         for j in range(0, i):
             if arrayIn[j]>arrayIn[i] and arrayIn[i] != '0':
                 disNum += 1
@@ -88,8 +89,6 @@ def manhattan(arr1, arr2):
 
 #def get misplaced tiles number
 def not_digits(arr1, arr2):
-    print("You are calling not_digits functions")
-    print(len(arr1), len(arr2))
     num = 0
     for i in range(0, 2):
         for j in range(0, 2):
@@ -141,7 +140,7 @@ goal_arr = input_state(goal)
 def main() :
     print("press 1 to input your initial state, press 2 to use default state")
     i = int(input())
-    initial = "123 450 786"
+    initial = "871 602 543"
     if i == 1:
         print("please input your state. The format should be like \"123 456 780\", where 0 is the blank")
         initial = input()
