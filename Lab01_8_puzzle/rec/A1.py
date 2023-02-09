@@ -20,6 +20,8 @@ def AStar_Misplaced(initial_arr, goal_arr):
     while len(open):
         print("counter: ", kkk, " len, ", len(open))
         kkk += 1
+        if kkk > 1e6:
+            break
         open.sort(key=lt.AMisplaced)
         head = open.pop(0)
         close.append(head)

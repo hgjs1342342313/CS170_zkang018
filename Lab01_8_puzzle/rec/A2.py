@@ -12,6 +12,8 @@ def AStar_Manhattan(initial_arr, goal_arr):
     while len(open):
         print("times: ", kkk)
         kkk += 1
+        if kkk > 1e6:
+            break
         sub_open = []
         sub_close = []
         for i in open:

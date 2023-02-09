@@ -18,8 +18,9 @@ import copy
 import A1
 import A2
 import UniformCostSearch as ucs
-
 import numpy as np
+
+
 # Module 1: if the solution is Available
 #def calcluate disordered number
 def calDisNum(arrayIn):
