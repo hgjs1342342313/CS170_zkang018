@@ -165,9 +165,9 @@ def main() :
         if i ==1:
             ucs.UCS(initial_arr, goal_arr)
         elif i == 2:
-            A1.AStar_ND(initial_arr, goal_arr)
+            A1.AStar_Misplaced(initial_arr, goal_arr)
         elif i == 3:
-            A2.AStar_MHT(initial_arr, goal_arr)
+            A2.AStar_Manhattan(initial_arr, goal_arr)
         else:
             print("invalid input. Shut down!")
             return 

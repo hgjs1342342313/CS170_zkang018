@@ -22,3 +22,12 @@ def search_line(close):
         print(np.array(i.state))
         print("v")
     print(np.array(close[-1].state))
+
+# A* weight for manhattan distance
+def AManha(item):
+    return item.cost+item.distance
+
+# A* weight for misplaced tiles
+def AMisplaced(item):
+    return item.cost+item.mis_nums
+
