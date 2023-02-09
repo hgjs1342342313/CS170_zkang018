@@ -4,7 +4,17 @@ import numpy as np
 #UCS
 def getMinIndex(arr):
     return arr.index(min(arr))
+
 #def ucs(initial_arr, goal_arr)
+#Parameters: initial_array: the initial state; goal_array: the goal state
+#variables: open: The new nodes that we need to explore
+#           close: The nodes that we have explored
+#           sub_open: The states of open array
+#           sub_close: The states of close array
+#           costarray: The cost of each node in open array
+#           min_index: The index of the node with the minimum cost in open array
+#           head: The node with the minimum cost in open array
+#           i: The children of head
 def UCS(initial_arr, goal_arr):
     open = [initial_arr]
     close = []

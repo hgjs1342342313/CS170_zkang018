@@ -6,8 +6,8 @@ import numpy as np
 
 # def AStar_Misplaced
 # [arr means array]Parameters: initial_array: the initial state; goal_array: the goal state
-# variables: open: 
-#            close:
+# variables: open: The new nodes that we need to explore
+#            close: The nodes that we have explored
 #         
 # 
 
@@ -32,12 +32,6 @@ def AStar_Misplaced(initial_arr, goal_arr):
             break
         childs = head.get_children()
         for i in childs:
-            # if i.state == goal_arr:
-            #     print("Found!")
-            #     print(np.array(head.state))
-            #     lt.print_path(head)
-            #     break
-            # else:
             if (i.state not in close) and (i.state not in open):
                 open.append(i)
 
