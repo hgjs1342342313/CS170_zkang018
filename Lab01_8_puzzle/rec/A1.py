@@ -19,25 +19,30 @@ def AStar_Misplaced(initial_arr, goal_arr):
     max_open = len(open) # max_open is the maximum length of open
     # for all nodes in open,
     while len(open):
+        sub_open = [i.state for i in open]
+        sub_close = [i.state for i in close]
         # print("counter: ", kkk, " len, ", len(open))
-        kkk += 1
         if kkk > 1e6:
             break
         open.sort(key=lt.AMisplaced)
         head = open.pop(0)
         close.append(head)
+        kkk += 1
         if head.state == goal_arr:
-            print("Found!")
+            print("Find optimial solution by A-Star Misplaced!")
+            print("The path is: ")
             print(np.array(head.state))
             lt.print_path(head)
             break
-        print("The best state to expand with g(n) = ", head.cost, " and h(n) = ", head.distance, " is...")
-        print(np.array(head.state), "Expanding this node...")
-        childs = head.get_children()
-        for i in childs:
-            if (i.state not in close) and (i.state not in open):
-                open.append(i)
-        max_open = max(max_open, len(open))
+        else:
+            print("The best state to expand with g(n) = ", head.cost, " and h(n) = ", head.mis_nums, " h(n) + g(n) = ", head.cost + head.mis_nums," is...")
+            print(np.array(head.state), "Expanding this node...")
+            print("\n")
+            childs = head.get_children()
+            for i in childs:
+                if (i.state not in sub_close) and (i.state not in sub_open):
+                    open.append(i)
+            max_open = max(max_open, len(open))
     
     lt.print_line()
     print("\n To solve this problem the search algorithm expanded a total of ", len(close), " nodes.")

@@ -13,13 +13,13 @@
 #        UniformCostSearch:
 #        A1: A* misplaced tiles
 #        A2: A* distance based
-import numpy as np
 import copy
 import A1
 import A2
 import UniformCostSearch as ucs
 import numpy as np
 import math
+from datetime import datetime
 
 
 # Module 1: if the solution is Available
@@ -127,7 +127,7 @@ class state:
                 parent = self, 
                 depth = self.depth+1, 
                 cost = self.cost+1,
-                distance = self.distance + euclidean(self.state, goal_arr),
+                distance = euclidean(self.state, goal_arr),
                 mis_nums = not_digits(self.state, goal_arr))
               
             #append the answer to the array
@@ -168,12 +168,40 @@ def main() :
         i = int(input())
         print("Expanding state")
         print(initial_arr.state)
+
+
+        # datetime1 = datetime.now()
+        # ucs.UCS(initial_arr, goal_arr)
+        # datetime2 = datetime.now()
+        # print("ucs time cost: ", datetime2-datetime1)
+
+        # datetime1 = datetime.now()
+        # A1.AStar_Misplaced(initial_arr, goal_arr)
+        # datetime2 = datetime.now()
+        # print("A* misplaced time cost: ", datetime2-datetime1)
+
+        # datetime1 = datetime.now()
+        # A2.AStar_Euclidean(initial_arr, goal_arr)
+        # datetime2 = datetime.now()
+        # print("A* euclidean time cost: ", datetime2-datetime1)
+
+
+
         if i ==1:
+            datetime1 = datetime.now()
             ucs.UCS(initial_arr, goal_arr)
+            datetime2 = datetime.now()
+            print("ucs time cost: ", datetime2-datetime1)
         elif i == 2:
+            datetime1 = datetime.now()
             A1.AStar_Misplaced(initial_arr, goal_arr)
+            datetime2 = datetime.now()
+            print("A* misplaced time cost: ", datetime2-datetime1)
         elif i == 3:
+            datetime1 = datetime.now()
             A2.AStar_Euclidean(initial_arr, goal_arr)
+            datetime2 = datetime.now()
+            print("A* euclidean time cost: ", datetime2-datetime1)
         else:
             print("invalid input. Shut down!")
             return 

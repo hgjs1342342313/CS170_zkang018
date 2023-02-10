@@ -27,5 +27,5 @@ def AEucli(item):
 
 # A* weight for misplaced tiles
 def AMisplaced(item):
-    return item.cost+item.mis_nums
+    return item.cost + item.mis_nums
 

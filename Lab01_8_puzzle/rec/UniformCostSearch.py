@@ -25,17 +25,12 @@ def UCS(initial_arr, goal_arr):
         kkk += 1
         if kkk > 1e6:
             break
-        sub_open = []
-        sub_close = []
-        costarray = []
-        for i in open:
-            sub_open.append(i)
-        for i in close:
-            sub_open.append(i)
-        for i in open:
-            costarray.append(i.cost)
+        open.sort(key=lambda x: x.cost)
+        sub_open = [i.state for i in open]
+        sub_close = [i.state for i in close]
+        costarray = [i.cost for i in open]
         min_index = getMinIndex(costarray)
-        head = open.pop(min_index)
+        head = open.pop(0)
         close.append(head)
         if head.state==goal_arr:
             print("Find optimial path by UCS!")
@@ -43,12 +38,11 @@ def UCS(initial_arr, goal_arr):
             lt.print_path(head)
             break
         else:
-            print("The best state to expand with g(n) = ", head.cost, " and h(n) = ", head.distance, " is...")
+            print("The best state to expand with g(n) = ", head.cost, " is...")
             print(np.array(head.state), "Expanding this node...")
             for i in head.get_children():
-                if i.state not in sub_open:
-                    if i.state not in sub_close:
-                        open.append(i)
+                if (i.state not in sub_close) and (i.state not in sub_open):
+                    open.append(i)
             max_open = max(max_open, len(open))
     lt.print_line()
     print("\n To solve this problem the search algorithm expanded a total of ", len(close), " nodes.")

@@ -12,15 +12,19 @@ def AStar_Euclidean(initial_arr, goal_arr):
     open = [initial_arr]
     close = []
     kkk = 0
-    max_open = len(open)
+    max_open = 0
     while len(open):
+        sub_open = [i.state for i in open]
+        sub_close = [i.state for i in close]
         print("times: ", kkk)
-        kkk += 1
+        
         if kkk > 1e6:
             break
+        open.sort(key = lt.AEucli)
+        max_open = max(max_open, len(open))
         head = open.pop(0)
         close.append(head)
-        open.sort(key = lt.AEucli)
+        kkk += 1
         if head.state == goal_arr:
             print("Find optimial solution by A-Star Euclidean!")
             print("The path is: ")
@@ -28,14 +32,14 @@ def AStar_Euclidean(initial_arr, goal_arr):
             lt.print_path(head)
             break
         else:
-            print("The best state to expand with g(n) = ", head.cost, " and h(n) = ", head.distance, " is...")
+            print("The best state to expand with g(n) = ", head.cost, " and h(n) = ", head.distance, " h(n) + g(n) = ", head.cost + head.distance," is...")
             print(np.array(head.state), "Expanding this node...")
             print("\n")
-            for i in head.get_children():
-                if i.state not in close:
-                    if i.state not in open:
-                        open.append(i)
-            max_open = max(max_open, len(open))
+            childs = head.get_children()
+            for i in childs:
+                if (i.state not in sub_close) and (i.state not in sub_open):
+                    open.append(i)
+            
 
                         
     lt.print_line()
