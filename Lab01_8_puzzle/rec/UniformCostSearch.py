@@ -19,8 +19,9 @@ def UCS(initial_arr, goal_arr):
     open = [initial_arr]
     close = []
     kkk = 0
+    max_open = len(open)
     while len(open):
-        print("times: ", kkk)
+        #print("times: ", kkk)
         kkk += 1
         if kkk > 1e6:
             break
@@ -48,6 +49,8 @@ def UCS(initial_arr, goal_arr):
                 if i.state not in sub_open:
                     if i.state not in sub_close:
                         open.append(i)
+            max_open = max(max_open, len(open))
     lt.print_line()
-    lt.search_line(close)
-    print("Searching length is ", len(close)-1, "Weight of the final node is ", close[-1].cost)
+    print("\n To solve this problem the search algorithm expanded a total of ", len(close), " nodes.")
+    print("The maximum number of nodes in the queue at any one time was ", max_open)
+    print("The depth of the goal node was ", close[-1].depth)

@@ -19,6 +19,7 @@ import A1
 import A2
 import UniformCostSearch as ucs
 import numpy as np
+import math
 
 
 # Module 1: if the solution is Available
@@ -48,7 +49,7 @@ def solutionAvail(initialState, goalState):
     else:
         return False # non-available
 
-#Module 2: get targets, children, elements that can swap, manhattan distance, misplaced tiles
+#Module 2: get targets, children, elements that can swap, euclidean distance, misplaced tiles
 #def find target
 def find_target(arr, target):
     for i in arr:
@@ -79,14 +80,16 @@ def get_elements(arr):
         elements.append(arr[r][c+1])
     return elements
 
-#def get manhattan distance
-def manhattan(arr1, arr2):
+#def get euclidean distance
+def euclidean(arr1, arr2):
     distance = []
     for i in arr1:
         for j in i:
             local1 = find_target(arr1, j)
             local2 = find_target(arr2, j)
-            distance.append(abs(local1[0]-local2[0])+abs(local1[1]-local2[1]))
+            d2 = pow((local1[0]-local2[0]), 2) + pow((local1[1]-local2[1]), 2)
+            d = math.sqrt(d2)
+            distance.append(d)
     return sum(distance)
 
 #def get misplaced tiles number
@@ -104,7 +107,7 @@ class state:
     #parent: the parent node of this state
     #cost: the cost of finding this node
     #depth: the depth of the current state
-    #distance: manhattan distance from this node to goal state
+    #distance: euclidean distance from this node to goal state
     #mis_nums: misplaced_tiles
     #goal_arr: goal state array
     def __init__(self, state, parent=None, depth = 1, cost = 0, distance = 0, mis_nums = 0):
@@ -124,7 +127,7 @@ class state:
                 parent = self, 
                 depth = self.depth+1, 
                 cost = self.cost+1,
-                distance = self.distance + manhattan(self.state, goal_arr),
+                distance = self.distance + euclidean(self.state, goal_arr),
                 mis_nums = not_digits(self.state, goal_arr))
               
             #append the answer to the array
@@ -142,7 +145,7 @@ goal_arr = input_state(goal)
 def main() :
     print("press 1 to input your initial state, press 2 to use default state")
     i = int(input())
-    initial = "012 453 786"
+    initial = "103 426 758"
     if i == 1:
         print("please input your state. The format should be like \"123 456 780\", where 0 is the blank")
         initial = input()
@@ -158,7 +161,7 @@ def main() :
             parent=None,
             depth=0,
             cost=0,
-            distance=manhattan(input_state(initial), goal_arr),
+            distance=euclidean(input_state(initial), goal_arr),
             mis_nums=not_digits(input_state(initial), goal_arr),
         )
         print("Now, print 1 to use UCS, print 2 to use A star with misplaced tiles, print 3 to use A star with distance")
@@ -170,7 +173,7 @@ def main() :
         elif i == 2:
             A1.AStar_Misplaced(initial_arr, goal_arr)
         elif i == 3:
-            A2.AStar_Manhattan(initial_arr, goal_arr)
+            A2.AStar_Euclidean(initial_arr, goal_arr)
         else:
             print("invalid input. Shut down!")
             return 

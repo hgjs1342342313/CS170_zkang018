@@ -15,10 +15,11 @@ import numpy as np
 def AStar_Misplaced(initial_arr, goal_arr):
     open = [initial_arr]
     close = []
-    kkk = 0
+    kkk = 0 # kkk is the counter
+    max_open = len(open) # max_open is the maximum length of open
     # for all nodes in open,
     while len(open):
-        print("counter: ", kkk, " len, ", len(open))
+        # print("counter: ", kkk, " len, ", len(open))
         kkk += 1
         if kkk > 1e6:
             break
@@ -36,7 +37,10 @@ def AStar_Misplaced(initial_arr, goal_arr):
         for i in childs:
             if (i.state not in close) and (i.state not in open):
                 open.append(i)
+        max_open = max(max_open, len(open))
+    
     lt.print_line()
-    lt.search_line(close)
-    print("Searching path is", len(close) - 1)
+    print("\n To solve this problem the search algorithm expanded a total of ", len(close), " nodes.")
+    print("The maximum number of nodes in the queue at any one time was ", max_open)
+    print("The depth of the goal node was ", close[-1].depth)
                     
