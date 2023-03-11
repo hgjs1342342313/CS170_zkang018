@@ -162,7 +162,7 @@ def wash_data(filename):
         f.write(new_file_contents)
 
 def main():
-    filename = 'small-test-dataset.txt'
+    filename = 'Lab02_MachineLearning\small-test-dataset.txt'
     wash_data(filename)
     data = np.loadtxt('cleaned_file.txt', delimiter="  ", dtype= 'str')  
     # #data = np.genfromtxt(filename, delimiter=None, dtype= 'str')
@@ -170,6 +170,6 @@ def main():
     
     feature_to_add = -1            
     leave_one_out_cross_validation(data, current_set, feature_to_add)
-    
+
 if __name__ == '__main__':
     main()
