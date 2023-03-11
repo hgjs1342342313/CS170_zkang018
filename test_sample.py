@@ -1,7 +1,6 @@
 # content of test_sample.py
-def func(x):
-    return x + 1
+import Lab02_MachineLearning.NN as nn
 
 
 def test_answer():
-    assert func(3) == 4
+    assert nn.main() == 0.89
