@@ -162,7 +162,7 @@ def wash_data(filename):
         f.write(new_file_contents)
 
 def main():
-    filename = '.\\Lab02_MachineLearning\\small-test-dataset.txt'
+    filename = 'small-test-dataset.txt'
     wash_data(filename)
     data = np.loadtxt('cleaned_file.txt', delimiter="  ", dtype= 'str')  
     # #data = np.genfromtxt(filename, delimiter=None, dtype= 'str')
