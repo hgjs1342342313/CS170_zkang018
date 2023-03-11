@@ -3,6 +3,7 @@ import BackwardElimination as be
 import random
 import NN
 import numpy as np
+import RDM as rdm
 # Generate a random feature array
 # 此时的feature array是一个随机生成的数组，后面可以改成从文件中读取
 # 每一个feature是一个概率， 表示这个feature的结果
@@ -39,6 +40,7 @@ if __name__ == "__main__":
     print("Type the number of algorithm you want to run:")
     print("1. Forward Selection")
     print("2. Backward Elimination")
+    print("3. Zheming's randomly return the answer function")
     algorithm = int(input())
     print("Beginning search")
     NN.wash_data(fileaddress)
@@ -51,5 +53,7 @@ if __name__ == "__main__":
         # Backward Elimination
         # initState = state(randomFeature)
         be.BackwardElimination(data)
+    elif algorithm == 3:
+        rdm.randomlyReturn(data)
     else:
         print("Invalid input")
