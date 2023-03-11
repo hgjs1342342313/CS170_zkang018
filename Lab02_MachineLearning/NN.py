@@ -164,7 +164,7 @@ def wash_data(filename):
 def main():
     filename = 'small-test-dataset.txt'
     wash_data(filename)
-    data = np.loadtxt('cleaned_file.txt', delimiter="  ", dtype= 'str')  
+    data = np.loadtxt('cleaned_file.txt')  
     # #data = np.genfromtxt(filename, delimiter=None, dtype= 'str')
     current_set = [3, 5, 7]
     
