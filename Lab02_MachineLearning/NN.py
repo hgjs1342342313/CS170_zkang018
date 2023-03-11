@@ -161,7 +161,7 @@ def wash_data(filename):
         # 将修改后的内容写回文件
         f.write(new_file_contents)
 
-if __name__ == '__main__':
+def main():
     filename = 'small-test-dataset.txt'
     wash_data(filename)
     data = np.loadtxt('cleaned_file.txt', delimiter="  ", dtype= 'str')  
@@ -170,3 +170,6 @@ if __name__ == '__main__':
     
     feature_to_add = -1            
     leave_one_out_cross_validation(data, current_set, feature_to_add)
+    
+if __name__ == '__main__':
+    main()

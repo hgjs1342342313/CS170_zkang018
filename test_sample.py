@@ -3,4 +3,4 @@ import Lab02_MachineLearning.NN as nn
 
 
 def test_answer():
-    assert nn() == 0.89
+    assert nn.main() == 0.89
